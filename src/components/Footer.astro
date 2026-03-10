@@ -14,6 +14,7 @@ const socials = [
 import { ui } from '../i18n/ui';
 const lang = (Astro.currentLocale || 'it') as keyof typeof ui;
 const t = ui[lang] as typeof ui['it'];
+import '../styles/global.css';
 ---
   
   
@@ -36,7 +37,7 @@ const t = ui[lang] as typeof ui['it'];
     text-align: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: white;
-    background: #9E3B3B;
+    background: var(--primary-color);
     border-radius: 10px;
     max-width: 950px;
     margin: auto;
@@ -62,13 +63,14 @@ const t = ui[lang] as typeof ui['it'];
 
   .socials {
     display: flex;
-    column-gap: 16px;
+    column-gap: 24px;
   }
 
   @media (max-width: 480px) {
     .container {
       padding: 1rem;
       margin: 1rem;
+      gap: 8px;
     }
 
   }

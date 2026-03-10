@@ -3,7 +3,7 @@ import gabrielImg from '../assets/img/gabriel.jpg';
 import { ui } from '../i18n/ui';
 const lang = (Astro.currentLocale || 'it') as keyof typeof ui;
 const t = ui[lang] as typeof ui['it'];
-
+import '../styles/global.css';
 ---
 
 <main>
@@ -39,7 +39,7 @@ const t = ui[lang] as typeof ui['it'];
     text-align: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: white;
-    background: #9E3B3B;
+    background: var(--primary-color);
     border-radius: 10px;
     max-width: 900px;
 
@@ -84,12 +84,13 @@ const t = ui[lang] as typeof ui['it'];
   .col {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    text-align: start;
   }
 
     @media (max-width: 768px) {
         .container h1 {
         font-size: 2rem;
+        margin-top: 0;
         }
     
         .container p {

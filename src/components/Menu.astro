@@ -1,0 +1,101 @@
+---
+import gabrielImg from '../assets/img/gabriel.jpg';
+import { ui } from '../i18n/ui';
+const lang = (Astro.currentLocale || 'it') as keyof typeof ui;
+const t = ui[lang] as typeof ui['it'];
+
+---
+
+<main>
+  <div class="container intro">
+      <div class="row">
+          <div class="col">
+              <img src={gabrielImg.src} alt="Gabriel" width="200" />
+          </div>
+          <div class="col">
+              <h1>{t['home.title']}</h1>
+              <p>{t['home.about']}</p>
+          </div>
+      </div>
+  </div>
+</main>
+
+<style>
+
+  main {
+    width: fit-content;
+    margin: auto;
+    caret-color: transparent;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    padding: 2rem;
+    margin: 2rem auto;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    background: #9E3B3B;
+    border-radius: 10px;
+    max-width: 900px;
+
+    img {
+      border-radius: 10px;
+    }
+  }
+
+  /* Media Query for Mobile phones (320px - 480px) */
+  @media (max-width: 480px) {
+    .intro {
+      padding: 1rem;
+      margin: 1rem;
+
+      img {
+      width: 150px;
+      }
+    }
+
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .container h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .container p {
+    font-size: 1.5rem;
+  }
+
+  .row {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin: 0;
+  }
+
+  .col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+    @media (max-width: 768px) {
+        .container h1 {
+        font-size: 2rem;
+        }
+    
+        .container p {
+        font-size: 1.2rem;
+        }
+    }
+
+
+</style>

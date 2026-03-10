@@ -1,0 +1,78 @@
+---
+import github from '../assets/img/socials/github.png';
+import linkedin from '../assets/img/socials/linkedin.png';
+import instagram from '../assets/img/socials/instagram.png';
+import youtube from '../assets/img/socials/youtube.png';
+
+const socials = [
+  { name: 'GitHub', img: github, url: 'https://github.com/zFishStick' },
+  { name: 'LinkedIn', img: linkedin, url: 'https://www.linkedin.com/in/gabriel-pesce-99a561216/' },
+  { name: 'Instagram', img: instagram, url: 'https://www.instagram.com/gabri.pesce_/' },
+  { name: 'YouTube', img: youtube, url: 'https://www.youtube.com/@pescamolle' }
+];
+
+import { ui } from '../i18n/ui';
+const lang = (Astro.currentLocale || 'it') as keyof typeof ui;
+const t = ui[lang] as typeof ui['it'];
+---
+  
+  
+<footer class="container">
+    <div class="row"><p style="font-weight: bold;;">{t['home.contacts']}</p></div>
+    <div class="row socials">
+        {socials.map((social) => (
+        <a href={social.url} target="_blank"><img src={social.img.src} alt={social.name} width="50" /></a>
+        ))}
+</footer>
+
+<style>
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    padding: 0.5rem;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    background: #9E3B3B;
+    border-radius: 10px;
+    max-width: 950px;
+    margin: auto;
+  }
+
+  .container a {
+    transition: all 0.3s ease;
+  }
+
+  .container a:hover {
+    transition: all 0.3s ease;
+    transform: scale(1.2);
+  }
+
+  .container p {
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+     @media (max-width: 480px) {
+      font-size: 1.2rem;
+       margin: 0.25rem 0;
+     }
+  }
+
+  .socials {
+    display: flex;
+    column-gap: 16px;
+  }
+
+  @media (max-width: 480px) {
+    .container {
+      padding: 1rem;
+      margin: 1rem;
+    }
+
+  }
+
+
+
+</style>

@@ -4,44 +4,27 @@ import ianuaImg from '../assets/img/projects/ianua.png';
 import rustpadImg from '../assets/img/projects/ianua.png';
 import travelplannerImg from '../assets/img/projects/ianua.png';
 
-
-const project = [
-    {
-        id: 1,
-        img: ianuaImg,
-        name: 'Ianua',
-        description: 'My first videogame made for a Game Jam, focused on Neapolitan culture and folklore. It has been written in Godot.',
-        link: 'https://example.com/project-one'
-    },
-    {
-        id: 2,
-        img: rustpadImg,
-        name: 'RustPAD',
-        description: 'A tool developed for my bachelor thesis, aimed to detect Performance Antipatterns in Rust programs.',
-        link: 'https://example.com/project-two'
-    },
-    {
-        id: 3,
-        img: travelplannerImg,
-        name: 'Travel Planner ✈️',
-         description: 'A web application that helps users plan their trips by providing personalized itineraries and more.',
-        link: 'https://example.com/project-three'
-    }
-];
+import { projects } from '../data/projects';
 
 import '../styles/global.css';
+
+import { ui } from '../i18n/ui';
+const lang = (Astro.currentLocale || 'it') as keyof typeof ui;
+const t = ui[lang] as typeof ui['it'];
 ---
 
 <section class="projects-viewer">
-    <h2>Some of my projects, take a look :)</h2>
-    {project.map((item) => (
+    <h2>{t['footer.title']}</h2>
+    {projects.map((item) => (
         <div class="project-card">
+            <div class="row">
+                <h3>{item.name}</h3>
+            </div>
             <div class="row">
                 <div class="col">
                     <img src={item.img.src} alt={item.name} width="100%" />
                 </div>
                 <div class="col">
-                    <h3>{item.name}</h3>
                     <p>{item.description}</p>
                 </div>
             </div>
@@ -155,12 +138,15 @@ import '../styles/global.css';
 
                 h2 {
                     color: var(--primary-color);
+                    text-align: center;
+                    font-size: 1.2rem;
                 }
 
                 .row {
                     display: flex;
                     flex-direction: row;
                     gap: 8px;
+                    align-items: center;
                 }
 
                 .col:first-child {
@@ -177,9 +163,13 @@ import '../styles/global.css';
                 background-color: var(--primary-color);
                 color: white;
 
+                h3 {
+                    font-size: 2rem;
+                    padding-left: 0.1rem;
+                }
+
                 p {
                     margin: 0.5rem 0;
-
                 }
             }
 
@@ -196,6 +186,7 @@ import '../styles/global.css';
                 padding: 1rem;
                 max-width: 600px;
                 margin-left: 3rem;
+                margin-right: auto;
                 text-align: end;
                 border-top-left-radius: 16px;
                 border-bottom-left-radius: 16px;

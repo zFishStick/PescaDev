@@ -10,4 +10,11 @@ export default defineConfig({
             prefixDefaultLocale: true
         }
     },
+    vite: {
+    server: {
+      allowedHosts: [
+        'subdentated-lavelle-unprinted.ngrok-free.dev'
+      ]
+    }
+  }
 });

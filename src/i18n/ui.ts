@@ -10,6 +10,7 @@ export const ui = {
     'home.contacts': 'Dai un\'occhiata ai miei social!',
     'nav.about': 'Chi Sono',
     'nav.contacts': 'Contatti',
+    'footer.title': 'Ecco alcuni dei miei progetti, dai un\'occhiata :)',
   },
   en: {
     'home.flag': en_flag.src,
@@ -18,5 +19,6 @@ export const ui = {
     'home.contacts': 'Check out my socials!',
     'nav.about': 'About Me',
     'nav.contacts': 'Contacts',
+    'footer.title': 'Here are some of my projects, take a look :)',
   },
 };

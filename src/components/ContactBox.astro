@@ -1,0 +1,110 @@
+---
+import { ui } from '../i18n/ui';
+
+const lang = (Astro.currentLocale || 'it') as keyof typeof ui;
+const t = ui[lang];
+
+const targetLang = lang === 'it' ? 'en' : 'it';
+
+const currentPath = Astro.url.pathname;
+const targetUrl = currentPath.replace(`/${lang}`, `/${targetLang}`);
+
+import { socials } from '../data/socials';
+import '../styles/global.css';
+---
+
+<div class="contact-box">
+    <div class="col">
+        {socials.map((social) => (
+            <div class="item">
+                <a href={social.url} target="_blank">
+                    <img src={social.img.src} alt={social.name} />
+                </a>
+            </div>
+        ))}
+    </div>
+</div>
+
+<style>
+    .contact-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        margin: 1rem auto;
+        padding: 2rem;
+        max-width: 500px;
+        background: var(--primary-color);
+        border-radius: 10px;
+        flex-wrap: wrap;
+    }
+
+    .contact-box a {
+        color: white;
+        text-decoration: none;
+        font-size: 1.5rem;
+        display: flex;
+    }
+
+    .contact-box a:hover {
+        text-decoration: underline;
+    }
+
+    .contact-box .col {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .item {
+        display: flex;
+        transition: all 0.3s ease;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        gap: 0.5rem;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: bold;
+        width: fit-content;
+
+        img {
+            width: 100px;
+            transition: all 0.3s ease;
+        }
+    }
+
+    .item:hover {
+        background: var(--secondary-color);
+        transition: all 0.3s ease;
+
+        img {
+            transform: scale(1.1);
+            transition: all 0.3s ease;
+        }
+
+    }
+
+    @media (max-width: 480px) {
+        .contact-box {
+            width: 85%;
+            padding: 1rem;
+        }
+
+        .contact-box .col {
+            gap: 0.1rem;
+        }
+
+        .contact-box a {
+            font-size: 1.2rem;
+        }
+
+        .item {
+            img {
+                width: 100px;
+            }
+        }
+    }
+
+</style>

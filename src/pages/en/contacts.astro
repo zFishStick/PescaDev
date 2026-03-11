@@ -1,8 +1,31 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/Navbar.astro';
+import ContactBox from '../../components/ContactBox.astro';
+
+import { ui } from '../../i18n/ui';
+
+const lang = (Astro.currentLocale || 'it') as keyof typeof ui;
+const t = ui[lang];
+
+const targetLang = lang === 'it' ? 'en' : 'it';
+
+const currentPath = Astro.url.pathname;
+const targetUrl = currentPath.replace(`/${lang}`, `/${targetLang}`);
 ---
 
 <Layout>
     <Navbar />
+    <h1>{t['contacts.title']}</h1>
+    <ContactBox />
 </Layout>
+
+<style>
+    h1 {
+        text-align: center;
+        margin-top: 2rem;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: var(--primary-color);
+        font-size: 3rem;
+    }
+</style>

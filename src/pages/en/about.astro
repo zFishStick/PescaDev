@@ -1,0 +1,58 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+
+import { ui } from '../../i18n/ui';
+const lang = (Astro.currentLocale || 'it') as keyof typeof ui;
+const t = ui[lang] as typeof ui['it'];
+
+import '../../styles/global.css';
+import pesca from '../../assets/img/pesca_icon.png';
+---
+
+<Layout>
+    <Navbar />
+    <header>
+        <p>{t['about.subtitle']}</p>
+        <div class="title-img">
+            <h1>Gabriel</h1>
+            <img src={pesca.src} alt="Pesca" />
+        </div>
+        
+    </header>
+</Layout>
+
+<style>
+    header {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        line-height: 1;
+    }
+    p {
+        font-size: 1.5rem;
+        margin-top: 2rem;
+        color: var(--primary-color);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .title-img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        h1 {
+            font-size: 4rem;
+            margin: 0;
+            color: var(--primary-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        img {
+            width: 60px;
+            margin-left: 0.5rem;
+        }
+    }
+
+</style>

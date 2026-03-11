@@ -11,6 +11,8 @@ export const ui = {
     'nav.about': 'Chi Sono',
     'nav.contacts': 'Contatti',
     'footer.title': 'Ecco alcuni dei miei progetti, dai un\'occhiata :)',
+    'contacts.title': 'Contatti',
+    'about.subtitle': 'Ciao! Sono'
   },
   en: {
     'home.flag': en_flag.src,
@@ -20,5 +22,7 @@ export const ui = {
     'nav.about': 'About Me',
     'nav.contacts': 'Contacts',
     'footer.title': 'Here are some of my projects, take a look :)',
+    'contacts.title': 'Contacts',
+    'about.subtitle': 'Hi! I\'m'
   },
 };

@@ -1,27 +1,16 @@
 ---
-import github from '../assets/img/socials/github.png';
-import linkedin from '../assets/img/socials/linkedin.png';
-import instagram from '../assets/img/socials/instagram.png';
-import youtube from '../assets/img/socials/youtube.png';
-
-const socials = [
-  { name: 'GitHub', img: github, url: 'https://github.com/zFishStick' },
-  { name: 'LinkedIn', img: linkedin, url: 'https://www.linkedin.com/in/gabriel-pesce-99a561216/' },
-  { name: 'Instagram', img: instagram, url: 'https://www.instagram.com/gabri.pesce_/' },
-  { name: 'YouTube', img: youtube, url: 'https://www.youtube.com/@pescamolle' }
-];
+import { socials } from '../data/socials';
 
 import { ui } from '../i18n/ui';
 const lang = (Astro.currentLocale || 'it') as keyof typeof ui;
 const t = ui[lang] as typeof ui['it'];
 import '../styles/global.css';
 ---
-  
-  
+
 <footer class="container">
     <div class="row"><p style="font-weight: bold;;">{t['home.contacts']}</p></div>
     <div class="row socials">
-        {socials.map((social) => (
+        {socials.slice(0, 4).map((social) => (
         <a href={social.url} target="_blank"><img src={social.img.src} alt={social.name} width="50" /></a>
         ))}
 </footer>

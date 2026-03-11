@@ -25,7 +25,7 @@ const t = ui[lang] as typeof ui['it'];
                     <img src={item.img.src} alt={item.name} width="100%" />
                 </div>
                 <div class="col">
-                    <p>{item.description}</p>
+                    <p class="description">{item.description}</p>
                 </div>
             </div>
             <div class="row">
@@ -66,64 +66,68 @@ const t = ui[lang] as typeof ui['it'];
             flex-direction: column;
         }
 
-            .project-card {
-                background-color: var(--primary-color);
-                color: white;
+        .description {
+            font-size: 1.6rem;
+        }
 
-                p {
-                    margin: 0.5rem 0;
+        .project-card {
+            padding: 1rem;
+            padding-top: 0;
+            background-color: var(--primary-color);
+            color: white;
 
-                }
+            p {
+                margin: 0.5rem 0;
             }
+        }
 
-            .project-card:nth-child(even) {
-                padding: 1rem;
-                max-width: 600px;
-                margin-right: auto;
-                text-align: start;
-                border-top-right-radius: 16px;
-                border-bottom-right-radius: 16px;
-            }
+        .project-card:nth-child(even) {
+            max-width: 600px;
+            margin-right: auto;
+            text-align: start;
+            border-top-right-radius: 16px;
+            border-bottom-right-radius: 16px;
+        }
 
-            .project-card:nth-child(odd) {
-                padding: 1rem;
-                max-width: 600px;
-                margin-left: auto;
-                text-align: end;
-                border-top-left-radius: 16px;
-                border-bottom-left-radius: 16px;
+        .project-card:nth-child(odd) {
+            max-width: 600px;
+            margin-left: auto;
+            text-align: end;
+            border-top-left-radius: 16px;
+            border-bottom-left-radius: 16px;
+            flex-direction: row-reverse;
+
+            .row {
                 flex-direction: row-reverse;
-
-                .row {
-                    flex-direction: row-reverse;
-                }
             }
+        }
 
-            .project-card h3 {
-                margin: 0;
-            }
+        .project-card h3 {
+            margin: 0;
+            font-size: 3rem;
+        }
 
-            .project-card img {
-                border-radius: 8px;
-            }
+        .project-card img {
+            border-radius: 8px;
+        }
 
-            .project-card a {
-                display: inline-block;
-                padding: 0.5rem 1rem;
-                background-color: var(--secondary-color);
-                color: white;
-                text-decoration: none;
-                border-radius: 4px;
-                width: -webkit-fill-available;
-                text-align: center;
-                font-weight: bold;
-                transition: all 0.3s ease;
-                margin-top: 1rem;
-            }
+        .project-card a {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: var(--secondary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            width: -webkit-fill-available;
+            text-align: center;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
 
-            .project-card a:hover {
-                background-color: var(--tertiary-color);
-            }
+        .project-card a:hover {
+            background-color: var(--tertiary-color);
+        }
     }
 
 
@@ -170,6 +174,7 @@ const t = ui[lang] as typeof ui['it'];
 
                 p {
                     margin: 0.5rem 0;
+                    font-size: 1rem;
                 }
             }
 

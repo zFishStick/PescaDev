@@ -8,7 +8,7 @@ export const projects = [
         id: 1,
         img: ianuaImg,
         name: 'Ianua',
-        description: 'My first videogame made for a Game Jam, focused on Neapolitan culture and folklore. It has been written in Godot.',
+        description: 'My first videogame made for a Game Jam, focused on Neapolitan culture and folklore.',
         link: 'https://example.com/project-one'
     },
     {

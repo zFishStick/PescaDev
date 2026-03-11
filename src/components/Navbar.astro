@@ -21,9 +21,9 @@ import '../styles/global.css';
   </button>
 
   <ul id="nav-links" class="nav-links">
-    <li><a href="/">Home</a></li>
-    <li><a href="/about">{t['nav.about']}</a></li>
-    <li><a href="/contacts">{t['nav.contacts']}</a></li>
+    <li><a href={`/${lang}/`}>Home</a></li>
+    <li><a href={`/${lang}/about`}>{t['nav.about']}</a></li>
+    <li><a href={`/${lang}/contacts`}>{t['nav.contacts']}</a></li>
     <li>
       <a href={targetUrl} style="display: flex;">
         <img src={t['home.flag']} alt="Cambia Lingua" width="40" style="cursor: pointer;" />

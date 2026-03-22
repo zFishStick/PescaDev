@@ -1,7 +1,7 @@
 
 import ianuaImg from '../assets/img/projects/ianua.png';
-import rustpadImg from '../assets/img/projects/ianua.png';
-import travelplannerImg from '../assets/img/projects/ianua.png';
+import rustpadImg from '../assets/img/projects/rustpad.png';
+import travelplannerImg from '../assets/img/projects/travel-planner.png';
 
 export const projects = [
     {
@@ -9,7 +9,7 @@ export const projects = [
         img: ianuaImg,
         name: 'Ianua',
         description: 'My first videogame made for a Game Jam, focused on Neapolitan culture and folklore.',
-        link: 'https://example.com/project-one'
+        link: 'https://pescamolle.itch.io/iuanua'
     },
     {
         id: 2,

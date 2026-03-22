@@ -1,28 +1,17 @@
+// src/i18n/ui.ts
+import { it } from './languages/it';
+import { en } from './languages/en';
+
+export const languages = {
+  it: 'Italiano',
+  en: 'English',
+};
+
 export const defaultLang = 'it';
-import it_flag from '../assets/img/flags/it.png';
-import en_flag from '../assets/img/flags/en.png';
 
 export const ui = {
-  it: {
-    'home.flag': it_flag.src,
-    'home.title': 'Benvenuto su PescaDev!',
-    'home.about': 'Il mio nome è Gabriel e sono un appassionato sviluppatore web.',
-    'home.contacts': 'Dai un\'occhiata ai miei social!',
-    'nav.about': 'Chi Sono',
-    'nav.contacts': 'Contatti',
-    'footer.title': 'Ecco alcuni dei miei progetti, dai un\'occhiata :)',
-    'contacts.title': 'Contatti',
-    'about.subtitle': 'Ciao! Sono'
-  },
-  en: {
-    'home.flag': en_flag.src,
-    'home.title': 'Welcome to PescaDev!',
-    'home.about': 'My name is Gabriel and I\'m a passionate web developer.',
-    'home.contacts': 'Check out my socials!',
-    'nav.about': 'About Me',
-    'nav.contacts': 'Contacts',
-    'footer.title': 'Here are some of my projects, take a look :)',
-    'contacts.title': 'Contacts',
-    'about.subtitle': 'Hi! I\'m'
-  },
-};
+  it,
+  en,
+} as const;
+
+export type TranslationKeys = typeof it;

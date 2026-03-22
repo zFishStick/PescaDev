@@ -1,9 +1,5 @@
 ---
-
-import ianuaImg from '../assets/img/projects/ianua.png';
-import rustpadImg from '../assets/img/projects/ianua.png';
-import travelplannerImg from '../assets/img/projects/ianua.png';
-
+import {Image} from 'astro:assets';
 import { projects } from '../data/projects';
 
 import '../styles/global.css';
@@ -14,7 +10,7 @@ const t = ui[lang] as typeof ui['it'];
 ---
 
 <section class="projects-viewer">
-    <h2>{t['footer.title']}</h2>
+    <h2>{t.projects.footerTitle}</h2>
     {projects.map((item) => (
         <div class="project-card">
             <div class="row">
@@ -22,7 +18,7 @@ const t = ui[lang] as typeof ui['it'];
             </div>
             <div class="row">
                 <div class="col">
-                    <img src={item.img.src} alt={item.name} width="100%" />
+                    <Image src={item.img} alt={item.name} loading="lazy" />
                 </div>
                 <div class="col">
                     <p class="description">{item.description}</p>
@@ -38,16 +34,20 @@ const t = ui[lang] as typeof ui['it'];
 <style>
 
     .projects-viewer {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
         gap: 2rem;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         padding-bottom: 2rem;
 
+        img {
+            width: 100%;
+            height: auto;
+        }
+
         h2 {
             color: var(--primary-color);
-            margin-bottom: 0;
+            margin: 1rem;
+            text-align: center;
+            font-size: 2rem;
         }
 
         .row {
@@ -144,6 +144,8 @@ const t = ui[lang] as typeof ui['it'];
                     color: var(--primary-color);
                     text-align: center;
                     font-size: 1.2rem;
+                    margin: 0 1rem;
+                    width: 290px;
                 }
 
                 .row {

@@ -1,5 +1,6 @@
 ---
-import gabrielImg from '../assets/img/gabriel.jpg';
+import {Image} from 'astro:assets';
+import gabrielImg from '../assets/img/personal_pic/gabriel.jpg';
 
 import { ui } from '../i18n/ui';
 const lang = (Astro.currentLocale || 'it') as keyof typeof ui;
@@ -12,11 +13,11 @@ import '../styles/global.css';
   <div class="container intro">
       <div class="row">
           <div class="col">
-              <img src={gabrielImg.src} alt="Gabriel" width="200" />
+            <Image src={gabrielImg} alt="Gabriel" />
           </div>
           <div class="col">
-              <h1>{t['home.title']}</h1>
-              <p>{t['home.about']}</p>
+              <h1>{t.home.title}</h1>
+              <p>{t.home.about}</p>
           </div>
       </div>
   </div>
@@ -38,6 +39,7 @@ import '../styles/global.css';
     height: auto;
     padding: 2rem;
     margin: 2rem auto;
+    margin-bottom: 0;
     text-align: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: white;
@@ -47,6 +49,8 @@ import '../styles/global.css';
 
     img {
       border-radius: 10px;
+      width: 200px;
+      height: auto;
     }
   }
 

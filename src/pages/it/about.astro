@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/Navbar.astro';
+import AboutBox from '../../components/AboutBox.astro';
 
 import { ui } from '../../i18n/ui';
 const lang = (Astro.currentLocale || 'it') as keyof typeof ui;
@@ -13,13 +14,13 @@ import pesca from '../../assets/img/pesca_icon.png';
 <Layout>
     <Navbar />
     <header>
-        <p>{t['about.subtitle']}</p>
+        <p>{t.about.subtitle}</p>
         <div class="title-img">
             <h1>Gabriel</h1>
             <img src={pesca.src} alt="Pesca" />
         </div>
-        
     </header>
+    <AboutBox />
 </Layout>
 
 <style>

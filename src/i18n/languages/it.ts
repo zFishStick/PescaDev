@@ -2,9 +2,9 @@
 import it_flag from '../../assets/img/flags/it.png';
 
 const aboutText = [
-  'Ho 22 anni e attualmente sto frequentando il mio primo anno di Magistrale in Informatica, con sede l\'Università di Milano Bicocca. Tra i vari corsi, quelli a cui sono più interessato vertono sull\'ambito dell\'Ingegneria del Software e in generale lo sviluppo Web.',
-  'All\'infuori dell\'università, ho diversi hobby, tra cui la programmazione (da piccoli tool, siti web e progetti più importanti per me), l\'editing video, i videogiochi (cosa ti aspetti da un informatico 🤓), ma in generale mi piace molto stare all\'aria aperta, allenarmi e passare del tempo con la mia famiglia.', 
-]
+  'Ho 22 anni, sto frequentando il mio primo anno di Magistrale in Informatica all\'Università di Milano Bicocca. Sono molto interessato all\'ambito dell\'<strong>Ingegneria del Software</strong> e in generale allo <strong>sviluppo Web</strong>.',
+  'All\'infuori dell\'università, ho diversi hobby:<br><ul class="hobby-list"><li>💻 <strong>Programmazione:</strong> da piccoli tool a siti web e progetti vari.</li><li>🎮 <strong>Videogiochi ed Editing video.</strong></li><li>⛰️ <strong>Vita all\'aria aperta:</strong> mi piace allenarmi e passare del tempo con la mia famiglia.</li></ul>'
+];
 
 export const it = {
   common: {
@@ -22,6 +22,7 @@ export const it = {
   },
   projects: {
     footerTitle: 'Alcuni dei miei progetti più importanti.',
+    importantProjects: 'Hey tu, sai che ho sviluppato un gioco? Dai un\'occhiata qui sotto!',
   },
   about: {
     subtitle: 'Ciao! Sono',

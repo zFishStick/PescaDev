@@ -2,7 +2,8 @@
 import { Image } from 'astro:assets';
 import { ui } from '../i18n/ui';
 
-import gabriel_pepeImg from '../assets/img/personal_pic/gabriel-pepe.jpg';
+import img1 from "../assets/img/personal_pic/gabriel-pepe.jpg";
+import img2 from "../assets/img/personal_pic/image_2.jpg";
 
 const lang = (Astro.currentLocale || 'it') as keyof typeof ui;
 const t = ui[lang];
@@ -11,28 +12,50 @@ const targetLang = lang === 'it' ? 'en' : 'it';
 
 const currentPath = Astro.url.pathname;
 const targetUrl = currentPath.replace(`/${lang}`, `/${targetLang}`);
+
+const aboutItems = [
+  {
+    side: "left",
+    imageSrc: img1,
+    alt: "Gabriel",
+    text: t.about.text_1 
+  },
+  {
+    side: "right",
+    imageSrc: img2,
+    alt: "Gabriel",
+    text: t.about.text_2
+  }
+];
+
 ---
 
-
-<div class="about-box left">
-    <div class="box">
-        <Image src={gabriel_pepeImg} alt="Gabriel" class="profile-pic" />
-        <p>{t.about.text_1}</p>
+<div id="about-container">
+  {aboutItems.map((item) => (
+    <div class={`about-box ${item.side}`}>
+      <div class="box">
+        <Image src={item.imageSrc} alt={item.alt} class="profile-pic" />
+        <div set:html={item.text}></div>
+      </div>
     </div>
-</div>
-
-<div class="about-box right">
-    <div class="box">
-        <Image src={gabriel_pepeImg} alt="Gabriel" class="profile-pic" />
-        <p>{t.about.text_2}</p>
-    </div>
+  ))}
 </div>
 
 <style>
 
+    :global(.hobby-list) {
+        list-style-type: none;
+        padding-left: 0;
+        margin-top: 10px;
+        }
+
+    :global(.hobby-list li) {
+        margin-bottom: 8px;
+    }
+
     .about-box {
         color: white;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-family: var(--font-base);
         margin-top: 2rem;
         display: flex;
     }
@@ -62,8 +85,9 @@ const targetUrl = currentPath.replace(`/${lang}`, `/${targetLang}`);
         align-items: center;
         gap: 0.5rem;
         padding: 1rem;
-        background-color: var(--secondary-color);
-        border-radius: 10px;
+        background: var(--card-gradient);
+        border-radius: 16px;
+        box-shadow: 0 10px 24px rgba(184, 85, 46, 0.25);
 
         img {
             width: 120px;
@@ -78,6 +102,17 @@ const targetUrl = currentPath.replace(`/${lang}`, `/${targetLang}`);
     }
 
     @media (max-width: 480px) {
+        img {
+            width: 100px;
+            height: auto;
+        }
+
+        p {
+            font-size: 1.25rem !important;
+            margin: 0;
+            font-weight: bold;
+        }
+
         .left {
             margin-left: 0;
 
@@ -88,17 +123,10 @@ const targetUrl = currentPath.replace(`/${lang}`, `/${targetLang}`);
                 display: block;
 
                 img {
-                    width: 100px;
-                    height: auto;
                     float: left;
                     margin-right: 1rem;
                 }
 
-                p {
-                    font-size: 1rem;
-                    font-weight: bold;
-                    margin: 0;
-                }
             }
         }
 
@@ -112,17 +140,10 @@ const targetUrl = currentPath.replace(`/${lang}`, `/${targetLang}`);
                 display: block;
 
                 img {
-                    width: 100px;
-                    height: auto;
                     float: right;
                     margin-left: 1rem;
                 }
 
-                p {
-                    font-size: 1rem;
-                    font-weight: bold;
-                    margin: 0;
-                }
             }
         }
     }

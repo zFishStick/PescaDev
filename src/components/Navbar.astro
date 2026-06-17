@@ -49,10 +49,13 @@ import '../styles/global.css';
     justify-content: space-between;
     align-items: center;
     padding: 1rem 2rem;
-    background: var(--secondary-color);
+    background: linear-gradient(120deg, var(--secondary-color), var(--primary-color));
     color: white;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: var(--font-base);
     caret-color: transparent;
+    box-shadow: 0 6px 20px rgba(184, 85, 46, 0.3);
+    position: relative;
+    z-index: 10;
   }
 
   .logo {
@@ -80,7 +83,7 @@ import '../styles/global.css';
 
   .nav-links a:hover {
     transition: all 0.3s ease;
-    color: #9E3B3B;
+    color: var(--pit-color);
     text-shadow: white;
   }
 
@@ -111,8 +114,8 @@ import '../styles/global.css';
     width: 100%;
     position: absolute;
     left: 0;
-    top: 107px; 
-    background: #D25353;
+    top: 107px;
+    background: linear-gradient(120deg, var(--secondary-color), var(--primary-color));
     text-align: center;
     padding: 1rem 0;
     align-items: flex-end;

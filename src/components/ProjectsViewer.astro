@@ -1,6 +1,6 @@
 ---
 import {Image} from 'astro:assets';
-import { projects } from '../data/projects';
+import { projects } from '../data//projects';
 
 import '../styles/global.css';
 
@@ -9,7 +9,7 @@ const lang = (Astro.currentLocale || 'it') as keyof typeof ui;
 const t = ui[lang] as typeof ui['it'];
 ---
 
-<section class="projects-viewer">
+<!-- <section class="projects-viewer">
     <h2>{t.projects.footerTitle}</h2>
     {projects.map((item) => (
         <div class="project-card">
@@ -29,41 +29,28 @@ const t = ui[lang] as typeof ui['it'];
             </div>
         </div>
     ))}
+</section> -->
+
+<section class="projects-viewer">
+    <h2>{t.projects.importantProjects}</h2>
+        <a href={projects[0].link} target="_blank" class="project-card">
+        <Image src={projects[0].img} alt={projects[0].name} loading="lazy"/>
+        <p class="description">{projects[0].description[lang]}</p>
+    </a>
 </section>
 
 <style>
 
     .projects-viewer {
         gap: 2rem;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-family: var(--font-base);
         padding-bottom: 2rem;
-
-        img {
-            width: 100%;
-            height: auto;
-        }
 
         h2 {
             color: var(--primary-color);
-            margin: 1rem;
+            margin: 3rem 1rem 1.5rem;
             text-align: center;
             font-size: 2rem;
-        }
-
-        .row {
-            display: flex;
-            flex-direction: row;
-            gap: 8px;
-        }
-
-        .col:first-child {
-            flex: 0 0 auto;
-            width: 120px;
-        }
-
-        .col {
-            display: flex;
-            flex-direction: column;
         }
 
         .description {
@@ -73,33 +60,31 @@ const t = ui[lang] as typeof ui['it'];
         .project-card {
             padding: 1rem;
             padding-top: 0;
-            background-color: var(--primary-color);
+            background: var(--card-gradient);
             color: white;
+            box-shadow: 0 14px 32px rgba(184, 85, 46, 0.35);
+            border: 2px solid var(--tertiary-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
 
             p {
                 margin: 0.5rem 0;
             }
         }
 
-        .project-card:nth-child(even) {
-            max-width: 600px;
-            margin-right: auto;
-            text-align: start;
-            border-top-right-radius: 16px;
-            border-bottom-right-radius: 16px;
+        .project-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(184, 85, 46, 0.45);
         }
 
-        .project-card:nth-child(odd) {
-            max-width: 600px;
-            margin-left: auto;
-            text-align: end;
-            border-top-left-radius: 16px;
-            border-bottom-left-radius: 16px;
-            flex-direction: row-reverse;
-
-            .row {
-                flex-direction: row-reverse;
-            }
+        .project-card {
+            width: 50%;
+            margin: 0 auto;
+            text-align: center;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
         }
 
         .project-card h3 {
@@ -109,9 +94,16 @@ const t = ui[lang] as typeof ui['it'];
 
         .project-card img {
             border-radius: 8px;
+            width: 200px;
+            height: auto;
+            margin-top: 1rem;
         }
 
-        .project-card a {
+        .project-card p {
+            font-size: 1.5rem;
+        }
+
+        .projects-viewer a {
             display: inline-block;
             padding: 0.5rem 1rem;
             background-color: var(--secondary-color);
@@ -123,10 +115,11 @@ const t = ui[lang] as typeof ui['it'];
             font-weight: bold;
             transition: all 0.3s ease;
             margin-top: 1rem;
+            transition: all 0.3s ease;
         }
 
-        .project-card a:hover {
-            background-color: var(--tertiary-color);
+        .projects-viewer a:hover {
+            transform: scale(1.05);
         }
     }
 
@@ -137,7 +130,7 @@ const t = ui[lang] as typeof ui['it'];
                 flex-direction: column;
                 align-items: center;
                 gap: 2rem;
-                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-family: var(--font-base);
                 height: 80%;
 
                 h2 {
@@ -145,29 +138,15 @@ const t = ui[lang] as typeof ui['it'];
                     text-align: center;
                     font-size: 1.2rem;
                     margin: 0 1rem;
-                    width: 290px;
-                }
-
-                .row {
-                    display: flex;
-                    flex-direction: row;
-                    gap: 8px;
-                    align-items: center;
-                }
-
-                .col:first-child {
-                    flex: 0 0 auto;
-                    width: 120px;
-                }
-
-                .col {
-                    display: flex;
-                    flex-direction: column;
+                    width: 300px;
                 }
 
             .project-card {
-                background-color: var(--primary-color);
+                background: var(--card-gradient);
                 color: white;
+                width: 90%;
+                border: 2px solid var(--tertiary-color);
+                box-shadow: 0 14px 32px rgba(184, 85, 46, 0.35);
 
                 h3 {
                     font-size: 2rem;
@@ -180,27 +159,20 @@ const t = ui[lang] as typeof ui['it'];
                 }
             }
 
-            .project-card:nth-child(even) {
+            .project-card {
                 padding: 1rem;
-                max-width: 600px;
-                margin-right: 3rem;
-                text-align: start;
-                border-top-right-radius: 16px;
-                border-bottom-right-radius: 16px;
-            }
+                margin: 0 auto;
+                text-align: center;
+                border-radius: 16px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-decoration: none;
+                transition: all 0.3s ease;
 
-            .project-card:nth-child(odd) {
-                padding: 1rem;
-                max-width: 600px;
-                margin-left: 3rem;
-                margin-right: auto;
-                text-align: end;
-                border-top-left-radius: 16px;
-                border-bottom-left-radius: 16px;
-                flex-direction: row-reverse;
-
-                .row {
-                    flex-direction: row-reverse;
+                img {
+                    width: 50%;
+                    height: auto;
                 }
             }
 
@@ -212,22 +184,23 @@ const t = ui[lang] as typeof ui['it'];
                 border-radius: 8px;
             }
 
-            .project-card a {
+            .projects-viewer a {
                 display: inline-block;
                 padding: 0.5rem 1rem;
                 background-color: var(--secondary-color);
                 color: white;
                 text-decoration: none;
+                transition: all 0.3s ease;
                 border-radius: 4px;
                 width: -webkit-fill-available;
                 text-align: center;
                 font-weight: bold;
-                transition: all 0.3s ease;
                 margin-top: 1rem;
+                text-decoration: none;
             }
 
-            .project-card a:hover {
-                background-color: var(--tertiary-color);
+            .projects-viewer a:hover {
+                transform: scale(1.05);
             }
     }
 }

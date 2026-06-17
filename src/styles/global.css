@@ -1,7 +1,11 @@
 :root {
-    --primary-color: #9E3B3B;
-    --secondary-color: #D25353;
-    --tertiary-color: #e26b6b;
+    --primary-color: #B8552E;
+    --secondary-color: #E07847;
+    --tertiary-color: #FFB680;
+    --peach-cream: #FFF0DC;
+    --pit-color: #5C3320;
+    --font-base: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --card-gradient: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
 }
 
 * {

@@ -22,3 +22,11 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+astro.config.mjs
+package-lock.json
+.vscode/
+package.json
+.claude/
+tsconfig.json
+

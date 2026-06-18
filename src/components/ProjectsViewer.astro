@@ -9,35 +9,66 @@ const lang = (Astro.currentLocale || 'it') as keyof typeof ui;
 const t = ui[lang] as typeof ui['it'];
 ---
 
-<!-- <section class="projects-viewer">
-    <h2>{t.projects.footerTitle}</h2>
-    {projects.map((item) => (
-        <div class="project-card">
-            <div class="row">
-                <h3>{item.name}</h3>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <Image src={item.img} alt={item.name} loading="lazy" />
-                </div>
-                <div class="col">
-                    <p class="description">{item.description}</p>
-                </div>
-            </div>
-            <div class="row">
-                <a href={item.link} target="_blank">View Project</a>
-            </div>
-        </div>
-    ))}
-</section> -->
-
 <section class="projects-viewer">
     <h2>{t.projects.importantProjects}</h2>
-        <a href={projects[0].link} target="_blank" class="project-card">
-        <Image src={projects[0].img} alt={projects[0].name} loading="lazy"/>
-        <p class="description">{projects[0].description[lang]}</p>
-    </a>
+    <div class="project-row">
+        {projects.map((item) => (
+            <button
+                type="button"
+                class="project-card"
+                data-name={item.name}
+                data-description={item.description[lang]}
+                data-link={item.link}
+            >
+                <Image src={item.img} alt={item.name} loading="lazy" />
+                <h3>{item.name}</h3>
+            </button>
+        ))}
+    </div>
+
+    <div class="project-modal-overlay" id="project-modal-overlay" hidden>
+        <div class="project-modal" role="dialog" aria-modal="true" aria-labelledby="project-modal-title">
+            <button type="button" class="project-modal-close" id="project-modal-close" aria-label={t.projects.close}>&times;</button>
+            <h3 id="project-modal-title"></h3>
+            <p id="project-modal-description"></p>
+            <a id="project-modal-link" href="#" target="_blank" rel="noopener">{t.projects.viewProject}</a>
+        </div>
+    </div>
 </section>
+
+<script>
+    const overlay = document.getElementById('project-modal-overlay');
+    const title = document.getElementById('project-modal-title');
+    const description = document.getElementById('project-modal-description');
+    const link = document.getElementById('project-modal-link');
+    const closeBtn = document.getElementById('project-modal-close');
+
+    function openModal(card: HTMLElement) {
+        if (!overlay || !title || !description || !link) return;
+        title.textContent = card.dataset.name || '';
+        description.textContent = card.dataset.description || '';
+        link.setAttribute('href', card.dataset.link || '#');
+        overlay.hidden = false;
+    }
+
+    function closeModal() {
+        if (overlay) overlay.hidden = true;
+    }
+
+    document.querySelectorAll<HTMLElement>('.project-card').forEach((card) => {
+        card.addEventListener('click', () => openModal(card));
+    });
+
+    closeBtn?.addEventListener('click', closeModal);
+
+    overlay?.addEventListener('click', (event) => {
+        if (event.target === overlay) closeModal();
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closeModal();
+    });
+</script>
 
 <style>
 
@@ -45,6 +76,8 @@ const t = ui[lang] as typeof ui['it'];
         gap: 2rem;
         font-family: var(--font-base);
         padding-bottom: 2rem;
+        width: fit-content;
+        margin: 20px;
 
         h2 {
             color: var(--primary-color);
@@ -53,156 +86,149 @@ const t = ui[lang] as typeof ui['it'];
             font-size: 2rem;
         }
 
-        .description {
-            font-size: 1.6rem;
-        }
-
-        .project-card {
-            padding: 1rem;
-            padding-top: 0;
+        .project-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
             background: var(--card-gradient);
-            color: white;
             box-shadow: 0 14px 32px rgba(184, 85, 46, 0.35);
-            border: 2px solid var(--tertiary-color);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-            p {
-                margin: 0.5rem 0;
-            }
-        }
-
-        .project-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 40px rgba(184, 85, 46, 0.45);
+            padding: 2rem 1rem;
+            border-radius: 16px;
         }
 
         .project-card {
-            width: 50%;
-            margin: 0 auto;
+            flex: 0 1 240px;
+            max-width: 260px;
+            padding: 1rem;
+            color: white;
+            background: none;
+            border: none;
+            font-family: inherit;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-align: center;
             border-radius: 16px;
             display: flex;
             flex-direction: column;
             align-items: center;
             text-decoration: none;
+            background: var(--tertiary-color);
+        }
+
+        .project-card:hover,
+        .project-card:focus-visible {
+            transform: translateY(-6px);
         }
 
         .project-card h3 {
             margin: 0;
-            font-size: 3rem;
+            margin-top: 1rem;
+            font-size: 1.75rem;
+            font-family: 'PixelOperator', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         .project-card img {
             border-radius: 8px;
             width: 200px;
             height: auto;
-            margin-top: 1rem;
-        }
-
-        .project-card p {
-            font-size: 1.5rem;
-        }
-
-        .projects-viewer a {
-            display: inline-block;
-            padding: 0.5rem 1rem;
-            background-color: var(--secondary-color);
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
-            width: -webkit-fill-available;
-            text-align: center;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            margin-top: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .projects-viewer a:hover {
-            transform: scale(1.05);
         }
     }
 
+    .project-modal-overlay[hidden] {
+        display: none;
+    }
+
+    .project-modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        z-index: 1000;
+    }
+
+    .project-modal {
+        position: relative;
+        background: var(--card-gradient);
+        border: 2px solid var(--tertiary-color);
+        box-shadow: 0 20px 40px rgba(184, 85, 46, 0.45);
+        border-radius: 16px;
+        padding: 2rem;
+        max-width: 480px;
+        width: 100%;
+        color: white;
+        text-align: center;
+        font-family: var(--font-base);
+    }
+
+    .project-modal-close {
+        position: absolute;
+        top: 0.75rem;
+        right: 0.75rem;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.8rem;
+        line-height: 1;
+        cursor: pointer;
+    }
+
+    .project-modal h3 {
+        margin: 0 0 1rem;
+        font-size: 2rem;
+    }
+
+    .project-modal p {
+        font-size: 1.4rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .project-modal a {
+        display: inline-block;
+        padding: 0.5rem 1.5rem;
+        background-color: var(--secondary-color);
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        font-weight: bold;
+        transition: transform 0.3s ease;
+    }
+
+    .project-modal a:hover {
+        transform: scale(1.05);
+    }
 
     @media (max-width: 480px) {
         .projects-viewer {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 2rem;
-                font-family: var(--font-base);
-                height: 80%;
+            h2 {
+                font-size: 1.2rem;
+                margin: 0 1rem 1.5rem;
+                width: 300px;
+            }
 
-                h2 {
-                    color: var(--primary-color);
-                    text-align: center;
-                    font-size: 1.2rem;
-                    margin: 0 1rem;
-                    width: 300px;
-                }
+            .project-row {
+                padding: 1.5rem 1rem;
+            }
 
             .project-card {
-                background: var(--card-gradient);
-                color: white;
-                width: 90%;
-                border: 2px solid var(--tertiary-color);
-                box-shadow: 0 14px 32px rgba(184, 85, 46, 0.35);
+                flex: 0 1 100%;
 
                 h3 {
-                    font-size: 2rem;
-                    padding-left: 0.1rem;
+                    font-size: 1.5rem;
                 }
-
-                p {
-                    margin: 0.5rem 0;
-                    font-size: 1rem;
-                }
-            }
-
-            .project-card {
-                padding: 1rem;
-                margin: 0 auto;
-                text-align: center;
-                border-radius: 16px;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                text-decoration: none;
-                transition: all 0.3s ease;
 
                 img {
-                    width: 50%;
-                    height: auto;
+                    width: 60%;
                 }
             }
+        }
 
-            .project-card h3 {
-                margin: 0;
-            }
-
-            .project-card img {
-                border-radius: 8px;
-            }
-
-            .projects-viewer a {
-                display: inline-block;
-                padding: 0.5rem 1rem;
-                background-color: var(--secondary-color);
-                color: white;
-                text-decoration: none;
-                transition: all 0.3s ease;
-                border-radius: 4px;
-                width: -webkit-fill-available;
-                text-align: center;
-                font-weight: bold;
-                margin-top: 1rem;
-                text-decoration: none;
-            }
-
-            .projects-viewer a:hover {
-                transform: scale(1.05);
-            }
+        .project-modal {
+            padding: 1.5rem;
+        }
     }
-}
 
 </style>

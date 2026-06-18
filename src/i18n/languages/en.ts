@@ -23,7 +23,9 @@ export const en: TranslationKeys = {
   },
   projects: {
     footerTitle: 'Some of my most important projects.',
-    importantProjects: 'Hey you, did you know I developed a game? Check it out below!',
+    importantProjects: 'Here you can find some of my most important projects.',
+    viewProject: 'View project',
+    close: 'Close',
   },
   about: {
     subtitle: 'Hi! I\'m',

@@ -1,7 +1,7 @@
 
 import ianuaImg from '../assets/img/projects/ianua.png';
 import rustpadImg from '../assets/img/projects/rustpad.png';
-import travelplannerImg from '../assets/img/projects/travel-planner.png';
+import darkSoulsRouletteImg from '../assets/img/projects/dark-souls-roulette.png';
 import { en } from '../i18n/languages/en';
 
 export const projects = [
@@ -27,7 +27,7 @@ export const projects = [
     },
     {
         id: 3,
-        img: travelplannerImg,
+        img: darkSoulsRouletteImg,
         name: 'Dark Soul Roulette',
         description: {
             en: 'A roulette game based on the Dark Souls franchise.',

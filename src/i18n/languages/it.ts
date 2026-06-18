@@ -22,7 +22,9 @@ export const it = {
   },
   projects: {
     footerTitle: 'Alcuni dei miei progetti più importanti.',
-    importantProjects: 'Hey tu, sai che ho sviluppato un gioco? Dai un\'occhiata qui sotto!',
+    importantProjects: 'Qui puoi trovare alcuni dei miei progetti più importanti.',
+    viewProject: 'Vedi il progetto',
+    close: 'Chiudi',
   },
   about: {
     subtitle: 'Ciao! Sono',

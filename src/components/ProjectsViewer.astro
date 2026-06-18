@@ -77,7 +77,7 @@ const t = ui[lang] as typeof ui['it'];
         font-family: var(--font-base);
         padding-bottom: 2rem;
         width: fit-content;
-        margin: 20px;
+        margin: auto;
 
         h2 {
             color: var(--primary-color);
@@ -203,9 +203,11 @@ const t = ui[lang] as typeof ui['it'];
 
     @media (max-width: 480px) {
         .projects-viewer {
+            margin: 20px;
+
             h2 {
                 font-size: 1.2rem;
-                margin: 0 1rem 1.5rem;
+                margin: 1rem auto;
                 width: 300px;
             }
 

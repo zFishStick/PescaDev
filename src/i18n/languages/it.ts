@@ -1,5 +1,6 @@
 // src/i18n/languages/it.ts
 import it_flag from '../../assets/img/flags/it.png';
+import { programs } from '../../data/programs';
 
 const aboutText = [
   'Ho 22 anni, sto frequentando il mio primo anno di Magistrale in Informatica all\'Università di Milano Bicocca. Sono molto interessato all\'ambito dell\'<strong>Ingegneria del Software</strong> e in generale allo <strong>sviluppo Web</strong>.',
@@ -25,6 +26,10 @@ export const it = {
     importantProjects: 'Qui puoi trovare alcuni dei miei progetti più importanti.',
     viewProject: 'Vedi il progetto',
     close: 'Chiudi',
+  },
+  programs: {
+    title: 'Programmi che utilizzo',
+    description: 'Questi sono alcuni dei programmi e lingaggi di programmazione che utilizzo (o ho utilizzato).',
   },
   about: {
     subtitle: 'Ciao! Sono',

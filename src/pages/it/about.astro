@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Navbar from '../../components/Navbar.astro';
 import AboutBox from '../../components/AboutBox.astro';
+import ProgramUsedBox from '../../components/ProgramUsedBox.astro';
 
 import { ui } from '../../i18n/ui';
 const lang = (Astro.currentLocale || 'it') as keyof typeof ui;
@@ -21,6 +22,8 @@ import pesca from '../../assets/img/pesca_icon.png';
         </div>
     </header>
     <AboutBox />
+    <ProgramUsedBox />
+
 </Layout>
 
 <style>

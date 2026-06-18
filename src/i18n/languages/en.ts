@@ -27,6 +27,10 @@ export const en: TranslationKeys = {
     viewProject: 'View project',
     close: 'Close',
   },
+  programs: {
+    title: 'Programs I use',
+    description: 'These are some of the programs and programming languages I use (or have used).',
+  },
   about: {
     subtitle: 'Hi! I\'m',
     text_1: aboutTextEn[0],
